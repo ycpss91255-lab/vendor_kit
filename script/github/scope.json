@@ -44,6 +44,7 @@
     {"pattern": "^justfile$", "scope": "justfile", "_why": "根目錄 justfile，跑引擎的建置與測試（#372）"}
   ],
   "groups": [
+    {"name": "rename-org", "scopes": ["adr:0001", "adr:0006", "adr:0007", "adr:0008", "adr:0014", "agents-doc:issue-tracker", "contract:04_interface", "contract:README", "contract:reason_codes", "engine", "hook:comment_tag_guard", "hook:issue_body_guard", "hook:prune_merged_worktrees", "image", "launcher", "script:git", "script:github", "script:workflow", "test", "workflow:discuss", "workflow:doc-edit", "workflow:pr", "workflow:pr-fix", "workflow:research"], "_why": "org 改名（#743）：全 repo 寫死的 org 名稱、映像路徑與網址一次改完；只改字串，拆開會讓部分檔案指向已失效的舊名稱，所以是同一件事"},
     {"name": "hook:pr_rules_guard", "scopes": ["hook:pr_rules_guard", "script:github"], "_why": "hook 呼叫 script/github/check_pr_rules.py 與這份範圍表"},
     {"name": "hook:monitor_guard", "scopes": ["hook:monitor_guard", "script:github"], "_why": "hook 擋下 Monitor 時指向 script/github/watch_github.sh（#175）"},
     {"name": "workflow:pr-fix", "scopes": ["workflow:pr-fix", "script:workflow"], "_why": "workflow 只呼叫 script/workflow/pr_target.py 與 verify.py 做機械步驟（#187）"},

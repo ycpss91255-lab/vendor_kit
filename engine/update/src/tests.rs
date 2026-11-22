@@ -572,10 +572,7 @@ fn private_tool() -> Registry {
     Registry::start(&[
         ("acme/tool", Repo::Private(vec!["v1.3.0"])),
         ("acme/other", Repo::Public(vec!["v1.0.0"])),
-        (
-            "ycpss91255-lab/vendor_kit",
-            Repo::Public(vec!["v1.4.0"]),
-        ),
+        ("ycpss91255-lab/vendor_kit", Repo::Public(vec!["v1.4.0"])),
     ])
 }
 

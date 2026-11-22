@@ -1101,10 +1101,7 @@ fn shipped_root_file_contents_are_pinned() {
             ".vendor_kit/version.local.toml",
         ]
     );
-    assert_eq!(
-        release::ENGINE_REPO,
-        "ghcr.io/ycpss91255-lab/vendor_kit"
-    );
+    assert_eq!(release::ENGINE_REPO, "ghcr.io/ycpss91255-lab/vendor_kit");
     assert_eq!(r.config, release::CONFIG_TEMPLATE);
 }
 
