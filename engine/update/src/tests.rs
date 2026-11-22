@@ -258,7 +258,7 @@ fn all_public() -> Registry {
         ),
         ("acme/other", Repo::Public(vec!["v1.0.0"])),
         (
-            "ycpss91255-research/vendor_kit",
+            "ycpss91255-lab/vendor_kit",
             Repo::Public(vec!["v1.4.0", "v1.10.0", "v1.9.0"]),
         ),
     ])
@@ -465,7 +465,7 @@ fn update_prints_one_result_line_per_tool_and_the_engine() {
     assert!(
         listed
             .iter()
-            .any(|r| r.contains("/v2/ycpss91255-research/vendor_kit/tags/list")),
+            .any(|r| r.contains("/v2/ycpss91255-lab/vendor_kit/tags/list")),
         "{listed:?}"
     );
     assert!(!listed.iter().any(|r| r.contains("acme/vendor_kit")));
@@ -536,7 +536,7 @@ fn a_failed_query_prints_latest_none_and_does_not_stop_the_others() {
     );
     assert!(
         out.stderr.contains(
-            "error[VK0055]: Cannot access ghcr.io/ycpss91255-research/vendor_kit for vendor_kit: registry returned HTTP 404"
+            "error[VK0055]: Cannot access ghcr.io/ycpss91255-lab/vendor_kit for vendor_kit: registry returned HTTP 404"
         ),
         "{}",
         out.stderr
@@ -573,7 +573,7 @@ fn private_tool() -> Registry {
         ("acme/tool", Repo::Private(vec!["v1.3.0"])),
         ("acme/other", Repo::Public(vec!["v1.0.0"])),
         (
-            "ycpss91255-research/vendor_kit",
+            "ycpss91255-lab/vendor_kit",
             Repo::Public(vec!["v1.4.0"]),
         ),
     ])
@@ -848,7 +848,7 @@ fn residual_engine_upgrade_progress_is_vk0023_with_the_target_tag_and_the_origin
     .unwrap();
     doc.set(
         &[progress::upgrade::TABLE, progress::upgrade::IMAGE],
-        "ghcr.io/ycpss91255-research/vendor_kit:v1.4.0@sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "ghcr.io/ycpss91255-lab/vendor_kit:v1.4.0@sha256:2222222222222222222222222222222222222222222222222222222222222222",
     )
     .unwrap();
     p.create(&fx.dir, WRITTEN_BY).unwrap();

@@ -19,7 +19,7 @@ sys.path.insert(0, str(HERE.parent))
 import pr_open  # noqa: E402
 
 HOME = "/" + "home/someone/"  # 拆開寫，避免這個測試檔本身被當成含本機路徑
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 BRANCH = "feat/x"
 TITLE = "feat(github): 新增 x 工具"
 BODY = "[claude] 新增 x 工具\n\n## 做了什麼\n\n新增 x。\n\nCloses #7\n"

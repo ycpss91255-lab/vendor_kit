@@ -17,7 +17,7 @@
 
 ```dockerfile
 FROM scratch
-LABEL org.opencontainers.image.source=https://github.com/ycpss91255-research/vendor_kit
+LABEL org.opencontainers.image.source=https://github.com/ycpss91255-lab/vendor_kit
 COPY dist/ /dist/
 ```
 

@@ -17,7 +17,7 @@
 
 - 內容（論據、名詞、選項）只能往前依賴：頁 N 只能用前面的頁與[名詞表](../../GLOSSARY.md)。
 - 導覽指標（例如「詳見 04」，只告訴讀者去哪裡看、不當論據）可以往後指，前提是拿掉連結後那一段仍讀得懂。
-- 根目錄 README 暫時移除，之後重寫時只做導覽與快速流程（見 [issue #375](https://github.com/ycpss91255-research/vendor_kit/issues/375)）。
+- 根目錄 README 暫時移除，之後重寫時只做導覽與快速流程（見 [issue #375](https://github.com/ycpss91255-lab/vendor_kit/issues/375)）。
 - 對外頁不寫「出處」。沿用前面頁的規則時，在正文寫「`依 [頁名第 N 條](連結#錨點)`」，連到那一條的標題錨點；不引用 ADR 或 issue。
 - 以[**名詞表**](../../GLOSSARY.md)的粗體詞條為準；名詞在每頁正文第一次出現時，連到該名詞所在的名詞表分群標題。同頁後續出現不重複連結。標題、程式碼區塊、行內程式碼與已有連結文字不算正文第一次；名詞先出現在標題時，連結放在標題下第一次出現於正文的位置。
 - 不用 HTML 標籤標示名詞。錨點一律由標題產生：要連到表格裡的某一列，就連到它所在的標題，連結文字寫出是哪一條，例如「以[結束碼](03_output.md#結束碼) `2` 結束，訊息見 [03 輸出](03_output.md#訊息)」。名詞表的名詞沒有個別錨點，連到它所在的分群標題，例如 `[工具](../../GLOSSARY.md#工具與出貨)`。
@@ -26,7 +26,7 @@
 
 ## 版本怎麼迭代
 
-這一節是對外文件審閱的固定流程，新接手的 agent 照這個順序做。出處：維護者 2026-09-30 定案；[issue #64](https://github.com/ycpss91255-research/vendor_kit/issues/64)。
+這一節是對外文件審閱的固定流程，新接手的 agent 照這個順序做。出處：維護者 2026-09-30 定案；[issue #64](https://github.com/ycpss91255-lab/vendor_kit/issues/64)。
 
 1. **草稿只改在討論分支。** 對外文件是本目錄的審閱頁（目前 01～04）。草稿一律改在討論分支並開 PR，`main` 上只放定案版。定案之後才 merge 進 `main`，定案的條件見下一節。
 2. **改動一律跑 [doc-edit workflow](../../.claude/workflows/doc-edit.js)**。workflow 在第一次修改前自行把原內容備份到本機的 `doc/decisions/_backup/<鍵>.pre_<round>.md`，不用另外手動備份；`_backup/` 只在本機，不進 git（見[忽略清單](../../.gitignore)）。round 名稱是 `rNN`：取本機 `doc/decisions/_backup/` 裡最大的 `pre_rNN` 與 git log 裡 `Doc-Edit: rNN` footer 最大的編號，兩者取大再加一（例如最大是 `r100`，round 就是 `r101`），用過的不能重用。doc-edit workflow 開跑時會檢查 round 的格式是不是 `rNN`、編號是不是最大編號加一，重用或跳號就直接停。目前最大的編號這樣查：

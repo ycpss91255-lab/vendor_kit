@@ -22,7 +22,7 @@ use std::process::Command;
 use e2e::{VERSION, shell};
 
 const REPO: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/../..");
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 /// 引擎容器的 ID（fake_docker.bash 的 `engine_cid`）。
 const ENGINE_CID: &str = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 /// `gen/tools.just` 的一行（engine/tools_just 的 `line`；這裡不能依賴 engine crate，照抄格式）。

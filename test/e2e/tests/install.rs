@@ -23,7 +23,7 @@ const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
 const RELEASE_DIR_ENV: &str = "VK_TEST_RELEASE_DIR";
 /// 啟動器放引擎引用的檔（`in/` 裡；engine/plan 的 `files::IN_ENGINE`，照抄名字）。
 const IN_ENGINE: &str = "engine";
-const ENGINE_REPO: &str = "ghcr.io/ycpss91255-research/vendor_kit";
+const ENGINE_REPO: &str = "ghcr.io/ycpss91255-lab/vendor_kit";
 const ENGINE_DIGEST: &str =
     "sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const IMAGE: &str = "ghcr.io/acme/tool:v1.2.0";

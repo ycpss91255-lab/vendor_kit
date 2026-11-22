@@ -684,7 +684,7 @@ fn a_self_contradictory_record_is_vk0013() {
              unavailable; no files of the tool that .vendor_kit/baseline/tool.toml belongs to were \
              modified. Preserve .vendor_kit/baseline/tool.toml and run log /h/proj/.vendor_kit/log/r1.jsonl. \
              If the metadata was committed to Git, restore it from Git and retry. Otherwise, report the \
-             issue at https://github.com/ycpss91255-research/vendor_kit/issues and attach both files.\n"
+             issue at https://github.com/ycpss91255-lab/vendor_kit/issues and attach both files.\n"
         );
         assert_eq!(fx.read(".gitignore"), GITIGNORE);
         assert!(fx.lock().tool("tool").is_some());

@@ -1,6 +1,6 @@
 """找出已開 PR 的修改目標：分支、worktree、issue 編號，並把 worktree 準備到「乾淨且在 PR 分支最新」。
 
-用法：python3 script/workflow/pr_target.py <pr> [--repo <主 repo>] [--gh-repo ycpss91255-research/vendor_kit]
+用法：python3 script/workflow/pr_target.py <pr> [--repo <主 repo>] [--gh-repo ycpss91255-lab/vendor_kit]
 
 1. `gh pr view <pr> --json number,state,headRefName,body,url` 取分支與本文（唯讀）。PR 不是 OPEN 就報錯。
 2. issue：PR 本文裡第一個 `Closes #N`／`Refs #N`（也認 `Refs: #N`、Fixes、Resolves，大小寫不拘）。找不到就報錯。
@@ -29,7 +29,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from worktree import Fail, branch_exists, git, main_repo, worktree_path  # noqa: E402
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 ISSUE_REF = re.compile(r"\b(?:closes|closed|close|fixes|fixed|fix|resolves|resolved|resolve|refs)\b:?\s+#(\d+)",
                        re.IGNORECASE)
 

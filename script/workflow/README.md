@@ -113,7 +113,7 @@ python3 script/workflow/merge_pr.py <pr> [--no-merge] [--repo <主 repo>] [--scr
 - 查 mergeable：`gh pr view <pr> --json mergeable,...`，`UNKNOWN` 時每 5 秒重查，最多 6 次；`CONFLICTING` 就以 1 結束，錯誤寫明要先 rebase。PR 不是 OPEN 也停下（已經 merge 過就提示改用 `--no-merge`）。
 - 查 head：同一次查詢的 `headRefOid` 跟等 CI 前記下的不同（等的期間有新 push，CI 跑過的不是現在的 head）就以 1 結束，不 merge。
 - 查署名：PR 標題與本文經 [`hook_rules.py`](#hook_rulespy) 的 `BANNED`（`attribution_guard.py` 的規則）確認沒有 Claude 署名或 session 連結。
-- merge：經 [`hook_rules.py`](#hook_rulespy) 的 `guarded_run` 跑 `gh pr merge <pr> -R ycpss91255-research/vendor_kit --merge --match-head-commit <sha>`，只用 merge，不 squash、不 rebase（照 ruleset）；`--match-head-commit` 讓 GitHub 端也確認 head 還是 CI 跑過的那個。被 hook 擋就不執行，以 1 結束；之後再查一次確認 `state=MERGED` 且有 `mergedAt`。`--no-merge` 時跳過上面三項，直接確認已 merge，沒 merge 就以 1 結束，什麼都不動。
+- merge：經 [`hook_rules.py`](#hook_rulespy) 的 `guarded_run` 跑 `gh pr merge <pr> -R ycpss91255-lab/vendor_kit --merge --match-head-commit <sha>`，只用 merge，不 squash、不 rebase（照 ruleset）；`--match-head-commit` 讓 GitHub 端也確認 head 還是 CI 跑過的那個。被 hook 擋就不執行，以 1 結束；之後再查一次確認 `state=MERGED` 且有 `mergedAt`。`--no-merge` 時跳過上面三項，直接確認已 merge，沒 merge 就以 1 結束，什麼都不動。
 - 主 repo `git pull --ff-only`。
 - 用 `worktree.py` 的 remove 移除 `headRefName` 的 worktree 與本機分支；兩者都不存在就跳過（`worktree_skipped`），算成功。worktree 有未提交的改動或分支有沒推的 commit 時照 `worktree.py` 的規則拒絕。
 - 有給 `--scratch` 才刪暫存目錄，只刪慣例路徑：`pr-fix/<pr>/`（`pr-fix` workflow），以及每個 `--item` 的 `pr/<父題>-<no>/`（`pr` workflow，`/`、空白、`:` 換成 `_`，同 `pr.js`）。不做萬用刪除；`--item` 格式不對時什麼都不動。

@@ -61,7 +61,7 @@ const WF = `${ROOT}/script/workflow`
 const GH = `${ROOT}/script/github`
 log(`research #${issue} main ${ROOT}（腳本 ${WF}、workspace ${WS}）`)
 const dir = args.dir ?? `${WS}/reference/research/${issue}`
-const REPO = 'ycpss91255-research/vendor_kit'
+const REPO = 'ycpss91255-lab/vendor_kit'
 const BG = background.trim() ? `已定案前提（不要質疑）：\n${background.trim()}\n` : ''
 const brief = b => `${dir}/${b.id}_brief.md`
 const agyOut = b => `${dir}/${b.id}_agy.md`

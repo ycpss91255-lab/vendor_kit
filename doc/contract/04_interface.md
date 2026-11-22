@@ -63,13 +63,13 @@
 [-y](../../GLOSSARY.md#執行與結果) 只適用於[可寫 recipe](../../GLOSSARY.md#執行與結果)。已定組合為 `upgrade <repo> -y`、`upgrade --engine -y`（含 `--engine=<tag>`）、`install -y`，以及由 `bootstrap.sh` 首次導入時傳給 `install`；只檢查與修復不接受。
 
 - 授權界線依 [02 不變量第 1 條](02_invariants.md#1-使用者寫的內容歸使用者可以建要改先問永不刪永不覆蓋)；它只省略詢問，改動仍印到 stdout
-- 其餘指令是否依「可能詢問才接受」收斂，待確認，見[介面修改討論](https://github.com/ycpss91255-research/vendor_kit/issues/47)
+- 其餘指令是否依「可能詢問才接受」收斂，待確認，見[介面修改討論](https://github.com/ycpss91255-lab/vendor_kit/issues/47)
 - stdin 與 stderr 都是終端 (TTY) 才能互動；管線不算，不另從 `/dev/tty` 讀答案
 - 提示為 `[y/N]`，印到 stderr；答案從 stdin 讀，空白 Enter 等於否，EOF 不算同意
 - 沒帶 `-y` 又不能互動時，不做需詢問的修改；重跑方式、[診斷](../../GLOSSARY.md#執行與結果)與[結束碼](../../GLOSSARY.md#執行與結果)見[訊息表](reason_codes.csv)
 - 每次呼叫先問完所有問題，全部同意才寫入（執行紀錄除外），含恢復舊操作；答否的正常取消輸出見 [03 輸出](03_output.md#輸出)
 - 詢問中 Ctrl-C 不算同意；最終碼受 just 與外層訊號處理影響
-- 拒絕記錄的保存方式仍待確認，見[介面修改討論](https://github.com/ycpss91255-research/vendor_kit/issues/47)
+- 拒絕記錄的保存方式仍待確認，見[介面修改討論](https://github.com/ycpss91255-lab/vendor_kit/issues/47)
 
 ## 入口
 
@@ -83,7 +83,7 @@
 1. 從最新 Release 下載 `bootstrap.sh` 到目前目錄；下載失敗時以非零結束，不繼續執行後續步驟。
 
    ```bash
-   wget -O bootstrap.sh "https://github.com/ycpss91255-research/vendor_kit/releases/latest/download/bootstrap.sh" || exit $?
+   wget -O bootstrap.sh "https://github.com/ycpss91255-lab/vendor_kit/releases/latest/download/bootstrap.sh" || exit $?
    vk_bootstrap="$PWD/bootstrap.sh"
    ```
 
@@ -202,7 +202,7 @@ just vendor_kit <cmd> [arguments] [options]
 
 判定順序：用法 → 主機前置檢查 → 辨識救援呼叫 → 版本組合。版本組合判定依 [02 不變量第 10 條](02_invariants.md#10-相容性與演進同一個-x-內不破壞x-變動才可能不相容且先公告)。
 
-版本組合不合又有用法錯誤時（如 `upgrade --engine --bogus`），拒絕優先次序仍待確認，見[介面修改討論](https://github.com/ycpss91255-research/vendor_kit/issues/47)，不因此擴充救援清單。
+版本組合不合又有用法錯誤時（如 `upgrade --engine --bogus`），拒絕優先次序仍待確認，見[介面修改討論](https://github.com/ycpss91255-lab/vendor_kit/issues/47)，不因此擴充救援清單。
 
 | 版本組合不合時仍可用的類別 | 呼叫 |
 |---|---|
@@ -307,7 +307,7 @@ just vendor_kit <cmd> [arguments] [options]
 | 未列在鎖定行的工具目錄 | 留給 `prune` |
 | 初始檔的基準版落後 | 不自動合併，改用 `upgrade` |
 
-[取件](../../GLOSSARY.md#工具與出貨)、[metadata](../../GLOSSARY.md#初始檔與合併) 或未完成導入等問題的診斷與下一步見[訊息表](reason_codes.csv)。修復快取後仍報告原本問題，診斷與結果見訊息表。工具 recipe 前的自動 `sync` 帶警告完成時，本體是否執行及整次回碼仍待確認，見[自動同步與結果討論](https://github.com/ycpss91255-research/vendor_kit/issues/120)。
+[取件](../../GLOSSARY.md#工具與出貨)、[metadata](../../GLOSSARY.md#初始檔與合併) 或未完成導入等問題的診斷與下一步見[訊息表](reason_codes.csv)。修復快取後仍報告原本問題，診斷與結果見訊息表。工具 recipe 前的自動 `sync` 帶警告完成時，本體是否執行及整次回碼仍待確認，見[自動同步與結果討論](https://github.com/ycpss91255-lab/vendor_kit/issues/120)。
 
 ### update
 
@@ -415,9 +415,9 @@ VK 提供 Renovate regex preset 追蹤工具與引擎的正式版 `vX.Y.Z`；VK 
 
 ### remove 與 uninstall 的收回範圍
 
-`remove` 收回該工具的鎖定行、`cache/<repo>/`、基準版、印記、納管紀錄、[gen/](../../GLOSSARY.md#repo-內的檔與狀態) 的命名空間載入行，以及同意且符合判準的 append 行；初始檔保留。工具開著覆寫時的處置仍待確認，見[介面修改討論](https://github.com/ycpss91255-research/vendor_kit/issues/47)。
+`remove` 收回該工具的鎖定行、`cache/<repo>/`、基準版、印記、納管紀錄、[gen/](../../GLOSSARY.md#repo-內的檔與狀態) 的命名空間載入行，以及同意且符合判準的 append 行；初始檔保留。工具開著覆寫時的處置仍待確認，見[介面修改討論](https://github.com/ycpss91255-lab/vendor_kit/issues/47)。
 
-`uninstall` 的收回範圍與紀錄保存政策仍待確認，見[介面修改討論](https://github.com/ycpss91255-research/vendor_kit/issues/47)；目前介面為：
+`uninstall` 的收回範圍與紀錄保存政策仍待確認，見[介面修改討論](https://github.com/ycpss91255-lab/vendor_kit/issues/47)；目前介面為：
 
 - 收回鎖定行、基準版、納管紀錄、印記、薄殼、cache、gen、進度檔，以及符合判準的根目錄與工具 append 行；未收回的位置列清單
 - 解除覆寫紀錄，不要求先 `undev`，保留本機開發來源
@@ -447,7 +447,7 @@ VK 提供 Renovate regex preset 追蹤工具與引擎的正式版 `vX.Y.Z`；VK 
 
 - 檢查版本、快取與初始檔的一致性，不準備或修復 cache、gen、進度檔，不寫追蹤檔；執行紀錄照 [02 不變量第 4 條](02_invariants.md#4-永不靜默失敗)
 - 本機覆寫仍會擋下；基準版落後、缺件、環境不足等結果與下一步見[訊息表](reason_codes.csv)
-- 全新 checkout 缺 cache 的處理仍待確認，見[嚴格檢查決議](https://github.com/ycpss91255-research/vendor_kit/issues/124)
+- 全新 checkout 缺 cache 的處理仍待確認，見[嚴格檢查決議](https://github.com/ycpss91255-lab/vendor_kit/issues/124)
 
 ### test 路徑與 runner
 

@@ -10,7 +10,7 @@
    PR 不是 OPEN 也停下（已經 merge 過就改用 --no-merge）。headRefOid 跟步驟 1 記下的不同（等 CI 的期間有新 push，
    CI 跑過的不是現在的 head）就以 1 結束，不 merge。
 3. PR 標題與本文經 hook_rules.BANNED（attribution_guard.py 的規則）確認沒有 Claude 署名，
-   再經 hook_rules.guarded_run 跑 gh pr merge <pr> -R ycpss91255-research/vendor_kit --merge --match-head-commit <sha>
+   再經 hook_rules.guarded_run 跑 gh pr merge <pr> -R ycpss91255-lab/vendor_kit --merge --match-head-commit <sha>
    （只用 merge，不 squash、不 rebase；GitHub 端也確認 head 沒變）。被 hook 擋就不執行，以 1 結束。
 4. 確認已 merge（state=MERGED 且有 mergedAt），主 repo git pull --ff-only；主 repo 有未提交的改動
    （未追蹤檔不算）或不在 main 時停下，不 stash、不 checkout。要 merge 時這項在步驟 1 之前就先查，不過就不 merge。
@@ -52,7 +52,7 @@ class CiFail(Fail):
         self.res = res
 
 ITEM = re.compile(r"^[1-9][0-9]*-[A-Za-z0-9_.-]+$")
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 WAIT_CI = Path(__file__).resolve().parent / "wait_ci.py"
 UNKNOWN_RETRIES = 6
 UNKNOWN_INTERVAL = 5

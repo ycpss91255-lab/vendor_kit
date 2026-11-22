@@ -21,7 +21,7 @@ const RUN_ID: &str = "r1";
 const HEADER: &str = "vk-resolve/1 r1";
 const HOST_ROOT: &str = "/srv/proj";
 const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const IMAGE: &str = "ghcr.io/acme/tool:v1.2.0";
 const DIGEST: &str = "sha256:2222222222222222222222222222222222222222222222222222222222222222";
 const IMAGE_ID: &str = "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -831,7 +831,7 @@ fn other_tools_without_a_cache_are_all_named_before_any_write() {
     assert_data_eq!(
         stderr,
         snapbox::str![[r#"
-vendor_kit: error[VK0056]: Internal vendor_kit error: the cache of installed tools is missing: .vendor_kit/cache/alpha/, .vendor_kit/cache/beta/; run just vendor_kit sync first; reason code pending (draft VK0068, N4). This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log /srv/proj/.vendor_kit/log/r1.jsonl.
+vendor_kit: error[VK0056]: Internal vendor_kit error: the cache of installed tools is missing: .vendor_kit/cache/alpha/, .vendor_kit/cache/beta/; run just vendor_kit sync first; reason code pending (draft VK0068, N4). This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log /srv/proj/.vendor_kit/log/r1.jsonl.
 
 "#]]
     );

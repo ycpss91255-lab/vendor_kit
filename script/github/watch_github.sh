@@ -7,7 +7,7 @@
 #         結束時才通知一次；收到後再重新啟動，就能一直盯著，不受 Monitor 30 分鐘的上限（這個 repo 不用 Monitor，見 issue #70）。
 # 只讀：只呼叫 gh api 的 GET，不改 GitHub 上任何東西。
 set -u
-R=ycpss91255-research/vendor_kit
+R=ycpss91255-lab/vendor_kit
 INTERVAL=${1:-60}
 ONCE=${2:-}
 last=$(date -u +%Y-%m-%dT%H:%M:%SZ)

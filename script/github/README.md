@@ -4,7 +4,7 @@
 
 ## watch_github.sh
 
-[watch_github.sh](watch_github.sh) 盯 `ycpss91255-research/vendor_kit` 的 issue 與 PR，每隔一段時間查一次，有事件就每件印一行：新開的 issue／PR、新留言、被關閉或 merge 的 issue／PR。
+[watch_github.sh](watch_github.sh) 盯 `ycpss91255-lab/vendor_kit` 的 issue 與 PR，每隔一段時間查一次，有事件就每件印一行：新開的 issue／PR、新留言、被關閉或 merge 的 issue／PR。
 
 跑法（在 repo 根目錄）：
 
@@ -35,7 +35,7 @@ python3 script/github/check_pr_rules.py --pr <N> --git-diff
 ```
 
 - `--git-diff [<base>]`：腳本自己跑 `git diff --name-only <base>...HEAD` 取改動檔，`<base>` 預設 `origin/main`。
-- `--pr <N>`：本文用 `gh pr view <N>` 取（預設 repo `ycpss91255-research/vendor_kit`，可用 `--repo` 換），取代 `--body-file`。
+- `--pr <N>`：本文用 `gh pr view <N>` 取（預設 repo `ycpss91255-lab/vendor_kit`，可用 `--repo` 換），取代 `--body-file`。
 
 一定要三點（`<base>...HEAD`）：三點從分支與 main 的分岔點算起，只列分支自己的改動。兩點（`<base>..HEAD` 或 `git diff <base>`）比的是兩端快照，main 在分支開出之後又往前時，main 上別人的改動也會被列進來，誤判成改到多個範圍。用 `--git-diff` 就不用每個呼叫端自己記得三點。
 
@@ -60,7 +60,7 @@ python3 script/github/issue_open.py attach --parent <P> --issue <N>
 
 - `create`：
   1. 自檢：有 `--parent` 用 `script/workflow/body.py` 的規則（第一行要是 `Part of #N`、不含本機絕對路徑）；沒有 `--parent` 只查本機絕對路徑。有問題就停，不寫入。
-  2. 經 `guarded_run` 跑 `gh issue create -R ycpss91255-research/vendor_kit --title … --label … --body-file <絕對路徑>`，從輸出的網址取編號。
+  2. 經 `guarded_run` 跑 `gh issue create -R ycpss91255-lab/vendor_kit --title … --label … --body-file <絕對路徑>`，從輸出的網址取編號。
   3. 有 `--parent`：唯讀查 issue 的 database id（`gh api repos/<repo>/issues/<N> --jq .id`，不經 hook），再經 `guarded_run` 跑 `gh api -X POST repos/<repo>/issues/<P>/sub_issues -F sub_issue_id=<id>`。
   - issue 開成功就刪掉本文檔，`--keep-body` 保留；開之前失敗不刪。
 - `attach`：只做掛 sub-issue，給 `create` 開了 issue 但掛失敗時重試。
@@ -89,7 +89,7 @@ python3 script/github/post_comments.py --kind issue|pr --number <N> (--body-file
 ```
 
 - 留言檔：`--body-file` 依給的順序；`--dir` 取目錄裡的 `post_*.md`，依檔名排序。一則都沒有、檔案不存在都算用法錯。
-- 先全部 precheck：每一則都先用 `.claude/settings.json` 裡每支 Bash hook 檢查 `gh <kind> comment <N> -R ycpss91255-research/vendor_kit --body-file <絕對路徑>`（例如 `comment_tag_guard.py` 查第一行的 `[claude]`／`[codex]`／`[agy]` 標記與本機絕對路徑，`attribution_guard.py` 擋 Claude 署名）。任何一則被擋就一則都不貼。
+- 先全部 precheck：每一則都先用 `.claude/settings.json` 裡每支 Bash hook 檢查 `gh <kind> comment <N> -R ycpss91255-lab/vendor_kit --body-file <絕對路徑>`（例如 `comment_tag_guard.py` 查第一行的 `[claude]`／`[codex]`／`[agy]` 標記與本機絕對路徑，`attribution_guard.py` 擋 Claude 署名）。任何一則被擋就一則都不貼。
 - 再依序經 `guarded_run` 貼，從輸出取留言網址；某一則失敗就停，不貼後面的。
 - `--close`（只限 `--kind issue`）：全部貼完才經 `guarded_run` 跑 `gh issue close <N> -R <repo>`，不帶 `--comment`。
 - `--delete`：全部貼成功後刪掉留言檔。
@@ -125,7 +125,7 @@ python3 script/workflow/prepare_comment.py clean --out-dir <目錄>
 python3 script/github/pr_open.py --repo <worktree> --branch <分支> --issue <N> --body-file <檔> (--title <標題> | --title-from-commit) [--base main] [--keep-body]
 ```
 
-`--repo` 是分支所在的 worktree，git 指令與 hook 都在那裡跑；GitHub 上的 repo 固定是 `ycpss91255-research/vendor_kit`。依序：
+`--repo` 是分支所在的 worktree，git 指令與 hook 都在那裡跑；GitHub 上的 repo 固定是 `ycpss91255-lab/vendor_kit`。依序：
 
 1. `push`：worktree 的 HEAD 要等於 `origin/<分支>`（不 fetch，只用已有的 ref）。沒 push 或沒推齊就停，先 push 再跑。
 2. `existing`：唯讀查 `gh pr list -R <repo> --head <分支> --state open --json number,url`，這個分支已有 open PR 就停，`existing` 帶那個 PR。

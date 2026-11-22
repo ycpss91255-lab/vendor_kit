@@ -13,7 +13,7 @@
   （script/workflow/prepare_comment.py 產生的命名，檔名排序就是貼出順序）。一則都沒有、
   檔案不存在或 --dir 不是目錄都算用法錯。
 - 先全部 precheck：對每一則用 hook_rules.precheck 檢查
-  `gh <kind> comment <N> -R ycpss91255-research/vendor_kit --body-file <絕對路徑>`；
+  `gh <kind> comment <N> -R ycpss91255-lab/vendor_kit --body-file <絕對路徑>`；
   任何一則被擋（或 hook 出錯）就一則都不貼。
 - 再依序經 guarded_run 貼，從 stdout 最後一行取留言網址；某一則失敗就停，不貼後面的。
 - --close（只限 --kind issue）：全部貼完才經 guarded_run 跑 `gh issue close <N> -R <repo>`；
@@ -41,7 +41,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "workflow"))
 import hook_rules  # noqa: E402
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 BIN_ENV = "POST_COMMENTS_GH"
 PATTERN = "post_*.md"
 

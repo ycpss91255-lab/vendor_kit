@@ -42,7 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "workflow"))
 import body  # noqa: E402
 import hook_rules  # noqa: E402
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 BIN_ENV = "ISSUE_OPEN_GH"
 ISSUE_URL = re.compile(r"/issues/(\d+)\s*$")
 

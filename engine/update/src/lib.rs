@@ -110,7 +110,7 @@ pub const UNDEV_TARGET_KEY: &str = "target";
 /// 重組 `<original_command>` 時接在參數前面的字。
 pub const COMMAND_PREFIX: [&str; 2] = ["just", "vendor_kit"];
 /// 引擎 image 的 `<registry>/<路徑>`（engine/install 的 `release::ENGINE_REPO`；指令之間互不依賴，照抄）。
-pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-research/vendor_kit";
+pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-lab/vendor_kit";
 /// token 檔在安裝目錄外時，`stage` 放進 `in/` 的 slot 名。
 pub const TOKEN_SLOT: &str = "token";
 /// VK0001 的 `<cmd>`：訊息表寫 update 時印 upgrade。
