@@ -1,6 +1,6 @@
 """等 PR 的 CI 跑完並讀出結果（唯讀，只呼叫 `gh pr checks` 與 `gh run view`）。
 
-用法：python3 script/workflow/wait_ci.py <pr> [--timeout 600] [--interval 15] [--repo ycpss91255-research/vendor_kit]
+用法：python3 script/workflow/wait_ci.py <pr> [--timeout 600] [--interval 15] [--repo ycpss91255-lab/vendor_kit]
                                          [--failed-logs [--log-lines 80]]
 
 每隔 interval 秒跑一次 `gh pr checks <pr> -R <repo> --json name,state,bucket,link`，直到每個 check 都結束
@@ -23,7 +23,7 @@ import subprocess
 import sys
 import time
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 PASS = {"pass", "skipping"}
 FAIL = {"fail", "cancel"}
 NO_CHECKS = "no checks reported"

@@ -1225,7 +1225,7 @@ fn residual_engine_upgrade_is_vk0023_with_the_target_version() {
     .unwrap();
     doc.set(
         &[progress::upgrade::TABLE, progress::upgrade::IMAGE],
-        "ghcr.io/ycpss91255-research/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "ghcr.io/ycpss91255-lab/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222",
     )
     .unwrap();
     p.create(&fx.dir, WRITTEN_BY).unwrap();

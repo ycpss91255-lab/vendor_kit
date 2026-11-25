@@ -24,7 +24,7 @@ from pathlib import Path
 
 from repo_paths import main_dir
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 BUDGET = 20.0
 DEADLINE = time.monotonic() + BUDGET
 

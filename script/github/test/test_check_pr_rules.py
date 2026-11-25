@@ -15,6 +15,8 @@ import check_pr_rules as c  # noqa: E402
 
 SCRIPT = HERE.parent / "check_pr_rules.py"
 TABLE = c.load_table()
+# rename-org（#743）是一次性的跨範圍改名群組；其他範圍測試不該被它蓋掉，所以排除後再測。
+TABLE_NO_RENAME = {**TABLE, "groups": [g for g in TABLE["groups"] if g[0] != "rename-org"]}
 
 
 class IssueLinkTest(unittest.TestCase):
@@ -38,7 +40,11 @@ class IssueLinkTest(unittest.TestCase):
 
 class ScopeTest(unittest.TestCase):
     def scopes(self, files):
-        return c.scopes_of(files, TABLE)
+        return c.scopes_of(files, TABLE_NO_RENAME)
+
+    def test_rename_org_group_allows_cross_scope_rename(self):
+        s, p = c.scopes_of(["engine/src/main.rs", "launcher/bootstrap.sh"], TABLE)
+        self.assertEqual((s, p), (["rename-org"], []))
 
     def test_tool_with_test_and_readme_is_one_scope(self):
         s, p = self.scopes(["script/doc/pack_review.py", "script/doc/test/test_pack_review.py",

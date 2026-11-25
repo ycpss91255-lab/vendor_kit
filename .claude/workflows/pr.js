@@ -85,7 +85,7 @@ if (dupTags.length) {
   throw new Error(`同一父題內 items 的 no 不能重複：${dupTags.map(t => `#${t}`).join('、')}`)
 }
 
-const SLUG = 'ycpss91255-research/vendor_kit'
+const SLUG = 'ycpss91255-lab/vendor_kit'
 
 // ───────────────── 準備：沒給 repoRoot 就由子代理查出主 repo ─────────────────
 let repoRoot = repoArg?.trim()

@@ -17,7 +17,7 @@ const SHELL_REPAIR: &str = "@shell-repair";
 const RUN_ID: &str = "r1";
 const HOST_ROOT: &str = "/srv/proj";
 const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const CONSISTENT: &str = "Shell files match this engine version's templates.\n";
 
 /// 已安裝的目錄：版本鎖定行、跟這一版引擎一致的薄殼、出貨模板的 fixture。

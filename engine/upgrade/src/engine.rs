@@ -181,7 +181,7 @@ use version_file::{LocalFile, LockFile};
 use super::{Env, Step, Upgrade, VERB, discover_init_files, migrate, read_optional, text};
 
 /// 引擎 image 的 `<registry>/<路徑>`（engine/install 的 `release::ENGINE_REPO`；指令之間互不依賴，照抄）。
-pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-research/vendor_kit";
+pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-lab/vendor_kit";
 /// VK0055 的 `<target>`、VK0058 的 `<repo>`：引擎的名字（保留名，同 `progress::upgrade::ENGINE_TARGET`）。
 pub const ENGINE_NAME: &str = table::ENGINE_TARGET;
 /// 引擎 image 公告最低介面版的 LABEL（engine/compat 的 `image_build_args`、image/Dockerfile）。

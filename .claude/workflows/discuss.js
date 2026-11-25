@@ -60,7 +60,7 @@ log(`discuss ${round} main ${main}（腳本 ${WF}）`)
 
 // 內部對照（#359）：任何 codex／Claude 回答之前，先把已定案資料對照到每一題。
 // 有些題其實能由既有規則推出，不該再送去問維護者；brief 也不再只靠主對話挑的條文。
-const ISSUE_REPO = 'ycpss91255-research/vendor_kit'
+const ISSUE_REPO = 'ycpss91255-lab/vendor_kit'
 const SEARCH_LIMIT = 5 // 依關鍵字搜相關 issue 時，每題最多讀幾個
 const PAGES = ['01_purpose.md', '02_invariants.md', '03_output.md', '04_interface.md']
 const BASIS_ITEM = {
@@ -143,7 +143,7 @@ for (const q of questions) {
 log(`discuss ${round} 內部對照：讀到 ${strs(internal.read).length} 份，不存在 ${strs(internal.missing).length} 個，可由規則推出 ${[...basisOf.values()].filter(b => b.derivable).length} 題`)
 
 const BG = background.trim() ? `已定案前提（不要質疑）：\n${background.trim()}` : ''
-const READ = '需要更多依據時，再讀題目提到的檔與已定案資料。已定案的決定記在 wayfinder map issue：跑 `gh issue view 78 -R ycpss91255-research/vendor_kit --comments`，本文的「Decisions so far」凍結不改、之後的新決定在留言，兩者都讀；要某條決定的細節，跑 `gh issue view <child> -R ycpss91255-research/vendor_kit --comments` 讀該 child issue 的留言（結論在留言裡）。只讀，不要發 issue 或留言。結論跟任何一條定案衝突時要明講是哪一條（#<child>）。結論要附證據（檔名＋行號、外部文件網址或 repo 內實例），沒有證據的主張標明是推論。'
+const READ = '需要更多依據時，再讀題目提到的檔與已定案資料。已定案的決定記在 wayfinder map issue：跑 `gh issue view 78 -R ycpss91255-lab/vendor_kit --comments`，本文的「Decisions so far」凍結不改、之後的新決定在留言，兩者都讀；要某條決定的細節，跑 `gh issue view <child> -R ycpss91255-lab/vendor_kit --comments` 讀該 child issue 的留言（結論在留言裡）。只讀，不要發 issue 或留言。結論跟任何一條定案衝突時要明講是哪一條（#<child>）。結論要附證據（檔名＋行號、外部文件網址或 repo 內實例），沒有證據的主張標明是推論。'
 
 // 內部對照的結果：每一輪、codex 與 Claude 都拿到同一份，當作不可質疑的前提
 const basisText = q => {

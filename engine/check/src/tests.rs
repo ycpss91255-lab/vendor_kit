@@ -424,7 +424,7 @@ fn each_kind_of_residual_progress_file() {
 
 #[test]
 fn a_residual_engine_upgrade_reports_its_target_version() {
-    let image = "ghcr.io/ycpss91255-research/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
+    let image = "ghcr.io/ycpss91255-lab/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
     let fx = Fx::synced(&[&TOOL, &OTHER]);
     let mut p = Progress::new("upgrade", "old1", &["upgrade", "--engine", "-y"]).unwrap();
     let doc = p.document_mut();

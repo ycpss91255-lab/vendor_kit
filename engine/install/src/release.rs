@@ -22,7 +22,7 @@ use imageref::ImageRef;
 use layout::SHELL_FILES;
 
 /// 引擎 image 的 `<registry>/<路徑>`；引擎引用檔的值必須是這個 repo 的。
-pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-research/vendor_kit";
+pub const ENGINE_REPO: &str = "ghcr.io/ycpss91255-lab/vendor_kit";
 /// 根 `justfile` 的 `import` 行，不含行尾。
 pub const JUSTFILE_IMPORT: &str = "import '.vendor_kit/entry.just'";
 /// 根 `justfile` 不存在時建檔附的 `default`（整段，含行尾）。

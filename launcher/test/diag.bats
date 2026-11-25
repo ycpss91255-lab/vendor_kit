@@ -42,5 +42,5 @@ setup() {
 @test "a code missing from the fragment is reported as VK0056" {
     vk 'vk_diag VK9999'
     [ "$status" -eq 2 ]
-    [ "$stderr" = 'vendor_kit: error[VK0056]: Internal vendor_kit error: unknown reason code VK9999. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none.' ]
+    [ "$stderr" = 'vendor_kit: error[VK0056]: Internal vendor_kit error: unknown reason code VK9999. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none.' ]
 }

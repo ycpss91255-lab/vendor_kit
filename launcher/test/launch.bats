@@ -52,7 +52,7 @@ log_file() {
 
 internal() {
     log_file
-    REPLY="vendor_kit: error[VK0056]: Internal vendor_kit error: $1. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log $REPLY."
+    REPLY="vendor_kit: error[VK0056]: Internal vendor_kit error: $1. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log $REPLY."
 }
 
 # res <seq> <result> [<P>]：res.<seq> 的期待位元組與收到的相同（P 預設 1）。

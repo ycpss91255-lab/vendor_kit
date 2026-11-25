@@ -15,7 +15,7 @@ setup() {
 
 # internal <reason>：沒有執行紀錄時的 VK0056 整行。
 internal() {
-    REPLY="vendor_kit: error[VK0056]: Internal vendor_kit error: $1. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none."
+    REPLY="vendor_kit: error[VK0056]: Internal vendor_kit error: $1. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none."
 }
 
 # lock <內容（printf %b）>：寫 $work/v.toml，再跑 vk_main_recipe，成功時印出引用。

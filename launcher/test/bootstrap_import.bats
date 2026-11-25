@@ -294,7 +294,7 @@ not_obtained() {
     for p in '' 0 01 x; do
         vk "vk_bootstrap_engine=$x; vk_bootstrap_proto='$p'; vk_bootstrap_main; exit \$?"
         [ "$status" -eq 2 ]
-        [ "$stderr" = 'vendor_kit: error[VK0056]: Internal vendor_kit error: the embedded interface version is not valid. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none.' ]
+        [ "$stderr" = 'vendor_kit: error[VK0056]: Internal vendor_kit error: the embedded interface version is not valid. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none.' ]
         [ ! -e "$work/.vendor_kit" ]
         [ ! -e "$fake/calls" ] || ! grep -qv -- '^--version' "$fake/calls"
     done

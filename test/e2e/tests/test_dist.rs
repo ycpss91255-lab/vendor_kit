@@ -15,7 +15,7 @@ use snapbox::assert_data_eq;
 const RUN_ID: &str = "r1";
 const HOST_ROOT: &str = "/srv/proj";
 const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 
 /// 導入過 VK、沒有接任何工具的 repo。
 fn checkout(m: &Mounts) {

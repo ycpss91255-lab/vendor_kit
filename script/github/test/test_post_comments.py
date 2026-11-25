@@ -17,7 +17,7 @@ sys.path.insert(0, str(HERE.parent))
 import post_comments as pc  # noqa: E402
 
 HOME = "/" + "home/someone/"  # 拆開寫，避免這個測試檔本身被當成含本機路徑
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 FAKE_GH = """#!{python}
 import json, os, sys
 args = sys.argv[1:]

@@ -92,7 +92,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     set -eu; \
     shellcheck -x image/bootstrap/assemble.sh; \
     bash image/bootstrap/assemble.sh \
-        ghcr.io/ycpss91255-research/vendor_kit:v0.0.0@sha256:0000000000000000000000000000000000000000000000000000000000000000 \
+        ghcr.io/ycpss91255-lab/vendor_kit:v0.0.0@sha256:0000000000000000000000000000000000000000000000000000000000000000 \
         1 /out/bootstrap_messages.sh /out/bootstrap_smoke.sh; \
     cargo run --locked -q -p msggen -- \
         --csv doc/contract/reason_codes.csv \

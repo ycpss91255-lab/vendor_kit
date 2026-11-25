@@ -17,9 +17,9 @@ setup() {
     engine_v2="ghcr.io/acme/vendor_kit:v2.3.4@sha256:$A"
     embedded=$engine_v1
     usage_line='Usage: bootstrap.sh [-i <image>] [-y] | --repair [-i <image>] | -h'
-    checked='vendor_kit: error[VK0056]: Internal vendor_kit error: shell check reached (test stand-in). This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none.'
+    checked='vendor_kit: error[VK0056]: Internal vendor_kit error: shell check reached (test stand-in). This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none.'
     repaired=${checked/shell check/shell repair}
-    reached='vendor_kit: error[VK0056]: Internal vendor_kit error: initial import reached (test stand-in). This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none.'
+    reached='vendor_kit: error[VK0056]: Internal vendor_kit error: initial import reached (test stand-in). This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none.'
     no_git='vendor_kit: error[VK0035]: Cannot find .git in the current directory or any parent directory. Run bootstrap.sh from within a Git repository.'
     bad_lock='vendor_kit: error[VK0037]: Cannot read exactly one valid engine lock version line from .vendor_kit/version.toml. Initial import was not attempted.'
     repair_outside='vendor_kit: error[VK0039]: Cannot repair shell files outside an install directory. Initial import was not attempted.'
@@ -436,7 +436,7 @@ each_mode() {
     before=$(snap)
     for embedded in '' "ghcr.io/acme/vendor_kit:v1.0.0" "ghcr.io/acme/vendor_kit:latest@sha256:$A"; do
         bs
-        assert_stopped 2 'vendor_kit: error[VK0056]: Internal vendor_kit error: the embedded engine reference is not a pinned vX.Y.Z image reference. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log none.' "$before"
+        assert_stopped 2 'vendor_kit: error[VK0056]: Internal vendor_kit error: the embedded engine reference is not a pinned vX.Y.Z image reference. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log none.' "$before"
     done
 }
 

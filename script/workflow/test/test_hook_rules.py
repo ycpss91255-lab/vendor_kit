@@ -284,7 +284,7 @@ class RealHooks(unittest.TestCase):
     def comment(self, text):
         body = self.dir / "body.md"
         body.write_text(text, encoding="utf-8")
-        return hr.precheck(["gh", "issue", "comment", "1", "-R", "ycpss91255-research/vendor_kit",
+        return hr.precheck(["gh", "issue", "comment", "1", "-R", "ycpss91255-lab/vendor_kit",
                             "--body-file", str(body)], hr.ROOT, project_dir=hr.ROOT)
 
     def test_untagged_comment_denied(self):

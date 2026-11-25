@@ -58,7 +58,7 @@ for key in ("mergeable", "headRefOid"):  # 清單：有要這個欄位時每次�
 print(json.dumps(view))
 """
 HEAD = "a" * 40
-MERGE_CALL = f"pr merge 5 -R ycpss91255-research/vendor_kit --merge --match-head-commit {HEAD}"
+MERGE_CALL = f"pr merge 5 -R ycpss91255-lab/vendor_kit --merge --match-head-commit {HEAD}"
 
 
 class MergePr(unittest.TestCase):
@@ -365,7 +365,7 @@ class MergePr(unittest.TestCase):
         with mock.patch.object(t.hook_rules, "precheck", spy):
             code, out = self.run_main()
         self.assertEqual(code, 0, out)
-        self.assertEqual(seen, [["gh", "pr", "merge", "5", "-R", "ycpss91255-research/vendor_kit", "--merge",
+        self.assertEqual(seen, [["gh", "pr", "merge", "5", "-R", "ycpss91255-lab/vendor_kit", "--merge",
                                  "--match-head-commit", HEAD]])
         self.assertEqual(out["denied"], [])
 

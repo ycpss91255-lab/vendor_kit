@@ -8,7 +8,7 @@ use metadata::Metadata;
 use shell::Shell;
 
 /// 假 registry 裡引擎 image 的路徑（[`ENGINE_REPO`] 去掉 `ghcr.io/`）。
-const ENGINE_PATH: &str = "ycpss91255-research/vendor_kit";
+const ENGINE_PATH: &str = "ycpss91255-lab/vendor_kit";
 const TARGET_TAG: &str = "v1.2.0";
 
 fn target_ref() -> String {
@@ -30,7 +30,7 @@ const TARGET: Script = Script {
     namespaces: &[],
     fail: None,
     digests: &[
-        "ghcr.io/ycpss91255-research/vendor_kit@sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "ghcr.io/ycpss91255-lab/vendor_kit@sha256:2222222222222222222222222222222222222222222222222222222222222222",
     ],
     local: true,
     labels: LABELS,
@@ -1063,7 +1063,7 @@ fn redoing_an_interrupted_first_stage_stops_where_it_cannot_tell_what_to_do() {
     let out = run_engine(&fx, &["upgrade", "--engine"], &unused_registry());
     assert_gap_or_internal(
         &out,
-        "which is not a ghcr.io/ycpss91255-research/vendor_kit image",
+        "which is not a ghcr.io/ycpss91255-lab/vendor_kit image",
     );
     assert_eq!(fx.snapshot(), before);
 }

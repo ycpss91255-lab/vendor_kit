@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 
 HOOK = Path(__file__).resolve().parents[1] / "comment_tag_guard.py"
-API = "repos/ycpss91255-research/vendor_kit/issues/5/comments"
+API = "repos/ycpss91255-lab/vendor_kit/issues/5/comments"
 # 本機路徑樣式拆開寫，避免這個測試檔本身被當成含本機路徑
 HOME = "/" + "home/alice/"
 USERS = "/" + "Users/"

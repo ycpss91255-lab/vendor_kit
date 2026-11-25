@@ -11,7 +11,7 @@
       (--title <標題> | --title-from-commit) [--base main] [--keep-body]
 
   --repo：要開 PR 的分支所在的 worktree（git 指令與 hook 都在這裡跑）；
-  GitHub 上的 repo 固定是 ycpss91255-research/vendor_kit。
+  GitHub 上的 repo 固定是 ycpss91255-lab/vendor_kit。
 
 步驟：
   1. push：worktree 的 HEAD 要等於 origin/<分支>（不 fetch，只用已有的 ref）；沒 push 或沒推齊就停，
@@ -52,7 +52,7 @@ import check_commit_msg  # noqa: E402
 import check_pr_rules  # noqa: E402
 import hook_rules  # noqa: E402
 
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 BIN_ENV = "PR_OPEN_GH"
 PR_URL = re.compile(r"/pull/(\d+)\s*$")
 

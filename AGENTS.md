@@ -1,7 +1,7 @@
 ## Agent skills
 
 ### Issue tracker
-issue 記在 GitHub `ycpss91255-research/vendor_kit`（`gh` 一律帶 `-R ycpss91255-research/vendor_kit`，讓指令自己說出目標 repo，不依賴當下目錄的 remote 設定，也不會打到 fork）；外部 PR 不當需求來源。見 [issue tracker 約定](doc/agents/issue-tracker.md)。
+issue 記在 GitHub `ycpss91255-lab/vendor_kit`（`gh` 一律帶 `-R ycpss91255-lab/vendor_kit`，讓指令自己說出目標 repo，不依賴當下目錄的 remote 設定，也不會打到 fork）；外部 PR 不當需求來源。見 [issue tracker 約定](doc/agents/issue-tracker.md)。
 
 ### Triage labels
 五個標準狀態 = 同名標籤，沒有其他狀態標籤；要維護者拍板的貼 `needs-triage`（等維護者評估）。見 [triage 標籤](doc/agents/triage-labels.md)。
@@ -17,7 +17,7 @@ repo 上一層的 `vendor-kit_ws/` 是工作區：`src/` 是這個 repo，只放
 - **對外契約放 `doc/contract/`，不放 issue。** 這是刻意偏離 skill 的預設（`to-spec` 會把規格發到 issue）：issue 不好追蹤改動、做不了逐頁審與標示版差異。所以 `01_purpose.md`、`02_invariants.md`、`03_output.md`、`04_interface.md` 留在 repo，跑 `to-spec` 之類的 skill 時不要把它們搬進 issue。
 - **目錄一律用 `doc/`，不用 `docs/`。** 這是刻意偏離 skill 的預設：`.agents/skills/` 是外部引入的 skill，內文寫的 `docs/adr/`、`docs/agents/` 等一律讀成 `doc/adr/`、`doc/agents/`。skill 本身不改，改了以後同步上游會衝突；根目錄出現 `docs/` 時 [check_terms.py](script/doc/check_terms.py) 會擋下來。
 - 每個設計決議先在 issue 討論（中文）；定案後才寫 ADR。
-- **對外文件的依賴與導覽：** ① 內容（論據、名詞、選項）只能往前依賴，頁 N 只能用前面的頁與[名詞表](GLOSSARY.md)。② 導覽指標（例如「詳見 04」，只告訴讀者去哪裡看、不當論據）可以往後指，前提是拿掉連結後那一段仍讀得懂。③ 根目錄 README 暫時移除，之後重寫時只做導覽與快速流程（見 [issue #375](https://github.com/ycpss91255-research/vendor_kit/issues/375)）。
+- **對外文件的依賴與導覽：** ① 內容（論據、名詞、選項）只能往前依賴，頁 N 只能用前面的頁與[名詞表](GLOSSARY.md)。② 導覽指標（例如「詳見 04」，只告訴讀者去哪裡看、不當論據）可以往後指，前提是拿掉連結後那一段仍讀得懂。③ 根目錄 README 暫時移除，之後重寫時只做導覽與快速流程（見 [issue #375](https://github.com/ycpss91255-lab/vendor_kit/issues/375)）。
 - 術語集中在[名詞表](GLOSSARY.md)，同一條規則只寫一次；同一份內容寫在多頁（重複來源）違反的是這一條，不算往後依賴，另外處理。
 - **issue 本文與標題開好後不改，一律留言。** 這是刻意偏離 skill 的預設（wayfinder 會改 map 本文的「Decisions so far」）：新定案改在 map 留言記錄，map 本文的 Decisions so far、Not yet specified、Out of scope 等節的更新也一律留言，決策清單看 GitHub 的 sub-issue 面板。改本文、標題，或 agent 留言沒帶 `[claude]`／`[codex]`／`[agy]` 標記，會被 `.claude/hooks/` 的 hook 擋下。做法見 [issue tracker 約定](doc/agents/issue-tracker.md)。
 - **對外文件的審閱流程照[審閱頁說明](doc/contract/README.md)「版本怎麼迭代」做。** 對外文件是審閱頁 01～04。重點：

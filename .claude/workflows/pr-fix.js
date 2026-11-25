@@ -59,7 +59,7 @@ if (multiline.length) {
   throw new Error(`args.commit 只放 commit 訊息第一行（type(scope): 摘要）；footer Refs: #<issue> 由 workflow 補${many ? `（PR ${multiline.join('、')}）` : ''}`)
 }
 
-const SLUG = 'ycpss91255-research/vendor_kit'
+const SLUG = 'ycpss91255-lab/vendor_kit'
 log(`pr-fix ${prs.map(n => `#${n}`).join(' ')}${many ? '（並行）' : ''}`)
 
 const TARGET = {

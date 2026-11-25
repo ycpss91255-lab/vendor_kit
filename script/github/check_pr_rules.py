@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 TABLE = Path(__file__).resolve().parent / "scope.json"
-REPO = "ycpss91255-research/vendor_kit"
+REPO = "ycpss91255-lab/vendor_kit"
 DEFAULT_BASE = "origin/main"
 ISSUE_LINK = re.compile(r"(?i)\b(?:refs|closes|fixes|resolves):?\s+#(\d+)\b")
 

@@ -66,7 +66,7 @@ class TestValid(unittest.TestCase):
         self.assertEqual(errors("docs(contract): 調整用詞\n\nDoc-Edit: r126 light\n"), [])
 
     def test_cross_repo_refs(self):
-        self.assertEqual(errors("docs: 補連結\n\nRefs: ycpss91255-research/vendor_kit#1\n"), [])
+        self.assertEqual(errors("docs: 補連結\n\nRefs: ycpss91255-lab/vendor_kit#1\n"), [])
 
     def test_body_line_starting_with_fix_word_is_prose(self):
         self.assertEqual(errors("fix: 修正\n\nfix the parser so it works\n\nRefs: #1\n"), [])
@@ -200,7 +200,7 @@ class TestExemptions(unittest.TestCase):
 
     def test_merge_defaults(self):
         for title in (
-            "Merge pull request #61 from ycpss91255-research/fix/ins-underline",
+            "Merge pull request #61 from ycpss91255-lab/fix/ins-underline",
             "Merge branch 'feature/x'",
             "Merge branch 'feature/x' into dev",
             "Merge remote-tracking branch 'origin/feature/x'",
@@ -212,7 +212,7 @@ class TestExemptions(unittest.TestCase):
         for title in (
             "Merge branch 'main' into ci/commit-format",
             "Merge remote-tracking branch 'origin/main' into ci/commit-format",
-            "Merge branch 'main' of github.com:ycpss91255-research/vendor_kit into x",
+            "Merge branch 'main' of github.com:ycpss91255-lab/vendor_kit into x",
         ):
             with self.subTest(title=title):
                 assert_error_contains(self, title, "rebase")

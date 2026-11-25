@@ -96,7 +96,7 @@ pub const VK0013: Message = Message {
     level: Level::Error,
     disposition: Some(Disposition::Failed),
     sources: &[Source::Engine, Source::Test],
-    text: "Cannot process <file>: metadata is missing or corrupt and cannot be restored reliably. vendor_kit does not guess when records are unavailable; no files of the tool that <file> belongs to were modified. Preserve <file> and run log <path>. If the metadata was committed to Git, restore it from Git and retry. Otherwise, report the issue at https://github.com/ycpss91255-research/vendor_kit/issues and attach both files.",
+    text: "Cannot process <file>: metadata is missing or corrupt and cannot be restored reliably. vendor_kit does not guess when records are unavailable; no files of the tool that <file> belongs to were modified. Preserve <file> and run log <path>. If the metadata was committed to Git, restore it from Git and retry. Otherwise, report the issue at https://github.com/ycpss91255-lab/vendor_kit/issues and attach both files.",
 };
 
 pub const VK0014: Message = Message {
@@ -416,7 +416,7 @@ pub const VK0056: Message = Message {
     level: Level::Error,
     disposition: Some(Disposition::Failed),
     sources: &[Source::Bootstrap, Source::Engine, Source::Launcher, Source::Test],
-    text: "Internal vendor_kit error: <reason>. This is a VK bug. Report it at https://github.com/ycpss91255-research/vendor_kit/issues and attach run log <path>.",
+    text: "Internal vendor_kit error: <reason>. This is a VK bug. Report it at https://github.com/ycpss91255-lab/vendor_kit/issues and attach run log <path>.",
 };
 
 pub const VK0057: Message = Message {

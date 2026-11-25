@@ -9,8 +9,8 @@ import unittest
 from pathlib import Path
 
 HOOK = Path(__file__).resolve().parents[1] / "issue_body_guard.py"
-R = "-R ycpss91255-research/vendor_kit"
-API = "repos/ycpss91255-research/vendor_kit/issues/5"
+R = "-R ycpss91255-lab/vendor_kit"
+API = "repos/ycpss91255-lab/vendor_kit/issues/5"
 
 
 class IssueBodyGuardTest(unittest.TestCase):

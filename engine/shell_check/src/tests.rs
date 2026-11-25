@@ -111,7 +111,7 @@ impl Fx {
 }
 
 /// 引擎 v2.0.0 的版本鎖定行值。
-const ENGINE_V2: &str = "ghcr.io/ycpss91255-research/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
+const ENGINE_V2: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v2.0.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
 
 struct Out {
     code: u8,

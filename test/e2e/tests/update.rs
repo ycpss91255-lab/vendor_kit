@@ -18,7 +18,7 @@ const RUN_ID: &str = "r1";
 const HEADER: &str = "vk-resolve/1 r1";
 const HOST_ROOT: &str = "/srv/proj";
 const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.4.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.4.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const TOOL: &str = "ghcr.io/acme/tool:v1.2.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
 const OTHER: &str = "ghcr.io/acme/other:v1.0.0@sha256:3333333333333333333333333333333333333333333333333333333333333333";
 
@@ -60,13 +60,13 @@ fn stage_launcher(m: &Mounts, host: &Path) -> std::thread::JoinHandle<Seen> {
     })
 }
 
-/// 三個對象都公開的假 registry：工具查鎖定行的路徑，引擎查 ghcr.io/ycpss91255-research/vendor_kit。
+/// 三個對象都公開的假 registry：工具查鎖定行的路徑，引擎查 ghcr.io/ycpss91255-lab/vendor_kit。
 fn public_registry() -> Registry {
     Registry::start(&[
         ("acme/tool", Repo::public(&["v1.0.0", "v1.3.0", "latest"])),
         ("acme/other", Repo::public(&["v1.0.0"])),
         (
-            "ycpss91255-research/vendor_kit",
+            "ycpss91255-lab/vendor_kit",
             Repo::public(&["v1.4.0", "v1.10.0", "v1.9.0"]),
         ),
     ])
@@ -210,7 +210,7 @@ vendor_kit current: v1.4.0 latest: none
         snapbox::str![[r#"
 vendor_kit: error[VK0058]: Cannot determine the latest version of other: the registry has tags, but none is a valid vX.Y.Z tag. The query did not complete.
 vendor_kit: error[VK0001]: Cannot list versions for tool: registry read access is required; pulling still uses the host's Docker credentials. Add --registry-token-file <path> and rerun, or specify a version directly: just vendor_kit upgrade tool@<tag>
-vendor_kit: error[VK0055]: Cannot access ghcr.io/ycpss91255-research/vendor_kit for vendor_kit: registry returned HTTP 404 for [..]/v2/ycpss91255-research/vendor_kit/tags/list?n=100. The requested operation did not complete.
+vendor_kit: error[VK0055]: Cannot access ghcr.io/ycpss91255-lab/vendor_kit for vendor_kit: registry returned HTTP 404 for [..]/v2/ycpss91255-lab/vendor_kit/tags/list?n=100. The requested operation did not complete.
 
 "#]]
     );

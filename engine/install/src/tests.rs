@@ -12,7 +12,7 @@ use super::*;
 
 const WRITTEN_BY: &str = "v0.0.0";
 /// 啟動器放在 `in/engine` 的引用：本 repo 的引擎、tag 是 [`WRITTEN_BY`]。
-const ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v0.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v0.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const OTHER_ENGINE: &str = "ghcr.io/acme/vendor_kit:v0.9.0@sha256:9999999999999999999999999999999999999999999999999999999999999999";
 const TOOL: &str = "ghcr.io/acme/tool:v1.2.0@sha256:2222222222222222222222222222222222222222222222222222222222222222";
 const IMPORT: &str = "import '.vendor_kit/entry.just'";
@@ -735,7 +735,7 @@ fn engine_ref_that_is_not_one_pinned_line_is_vk0056_without_writes() {
     bad_engine_ref(Some(""), "engine must be exactly one line");
     bad_engine_ref(Some(&format!("{ENGINE}\n{ENGINE}\n")), "exactly one line");
     bad_engine_ref(
-        Some("ghcr.io/ycpss91255-research/vendor_kit:v0.0.0\n"),
+        Some("ghcr.io/ycpss91255-lab/vendor_kit:v0.0.0\n"),
         "is not a pinned reference",
     );
 }
@@ -744,7 +744,7 @@ fn engine_ref_that_is_not_one_pinned_line_is_vk0056_without_writes() {
 fn engine_ref_of_another_repo_is_vk0056_without_writes() {
     bad_engine_ref(
         Some(&format!("{OTHER_ENGINE}\n")),
-        "names ghcr.io/acme/vendor_kit, not this engine's ghcr.io/ycpss91255-research/vendor_kit",
+        "names ghcr.io/acme/vendor_kit, not this engine's ghcr.io/ycpss91255-lab/vendor_kit",
     );
 }
 
@@ -1101,10 +1101,7 @@ fn shipped_root_file_contents_are_pinned() {
             ".vendor_kit/version.local.toml",
         ]
     );
-    assert_eq!(
-        release::ENGINE_REPO,
-        "ghcr.io/ycpss91255-research/vendor_kit"
-    );
+    assert_eq!(release::ENGINE_REPO, "ghcr.io/ycpss91255-lab/vendor_kit");
     assert_eq!(r.config, release::CONFIG_TEMPLATE);
 }
 

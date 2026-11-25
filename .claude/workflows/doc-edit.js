@@ -120,7 +120,7 @@ const BACKGROUND = background.trim()
   ? `背景（已定案，不要質疑、不要重新設計）：\n${background.trim()}`
   : '（沒有額外背景前提。）'
 // 已定案的決定記在 GitHub 的 wayfinder map issue #78，每條連到各自的 child issue，結論在 child issue 的留言
-const DECIDED = 'wayfinder map issue 的已定案決定（跑 `gh issue view 78 -R ycpss91255-research/vendor_kit --comments`：本文的「Decisions so far」凍結不改，之後的新決定記在留言，兩者都要讀；每條連到一個 child issue；要某條的細節跑 `gh issue view <child> -R ycpss91255-research/vendor_kit --comments`，結論在留言裡；只讀，不要發 issue 或留言）'
+const DECIDED = 'wayfinder map issue 的已定案決定（跑 `gh issue view 78 -R ycpss91255-lab/vendor_kit --comments`：本文的「Decisions so far」凍結不改，之後的新決定記在留言，兩者都要讀；每條連到一個 child issue；要某條的細節跑 `gh issue view <child> -R ycpss91255-lab/vendor_kit --comments`，結論在留言裡；只讀，不要發 issue 或留言）'
 // 並行的子代理共用同一個 scratchpad：暫存檔用固定檔名會互相覆蓋（r144 的改前快照與 codex 輸出都被蓋過），
 // 所以每個子代理一律放自己的子目錄。label 的檔名只留 basename（不同目錄的同名檔會撞），
 // 所以子目錄名取自 tmp（步驟＋完整路徑的鍵），沒給 tmp 才用 label

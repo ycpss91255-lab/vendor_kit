@@ -4,7 +4,7 @@
 >
 > Serves: [P7：交付物依執行位置選語言](../decisions/design_principles.md#p7-交付物依執行位置選語言容器內看穩定性執行效率與測試清晰程度主機上看原生)、[不變量 4：永不靜默失敗](../contract/02_invariants.md#4-永不靜默失敗)、[不變量 9：對外承諾必須黑箱可驗；本機開發與正式啟動走同一個入口](../contract/02_invariants.md#9-對外承諾必須黑箱可驗本機開發與正式啟動走同一個入口)
 
-維護者於 2026-10-05 在 [#372](https://github.com/ycpss91255-research/vendor_kit/issues/372) 定案：VK 在 Docker 內執行的引擎本體、build stage 的訊息產生器、整支 VK 的端到端測試（只經公開入口 `just vendor_kit …` 與 `bootstrap.sh`）與模組邊界檢查全部使用 Rust，放在同一個 Cargo workspace。依 P7，只以穩定性、執行效率與測試清晰程度比較候選；學習成本、開發成本與 image 大小不列入判準。主機端的啟動器、薄殼內的 VK recipe 與 `log.sh` 依 P7 使用主機原生的 bash 與 just，其實作不在本 ADR 範圍內。
+維護者於 2026-10-05 在 [#372](https://github.com/ycpss91255-lab/vendor_kit/issues/372) 定案：VK 在 Docker 內執行的引擎本體、build stage 的訊息產生器、整支 VK 的端到端測試（只經公開入口 `just vendor_kit …` 與 `bootstrap.sh`）與模組邊界檢查全部使用 Rust，放在同一個 Cargo workspace。依 P7，只以穩定性、執行效率與測試清晰程度比較候選；學習成本、開發成本與 image 大小不列入判準。主機端的啟動器、薄殼內的 VK recipe 與 `log.sh` 依 P7 使用主機原生的 bash 與 just，其實作不在本 ADR 範圍內。
 
 ## Considered Options
 
@@ -22,7 +22,7 @@
 
 - `unused_must_use` 必須升為錯誤；非測試程式禁用 `unwrap`／`expect`／`panic!` 處理預期失敗；寫回要明確處理關檔錯誤，不靠 `Drop`。
 - 四個部分放在同一個 Cargo workspace：引擎本體依模組拆成 crate；訊息產生器是獨立的 generator bin；端到端測試與模組邊界檢查各自是獨立 crate。
-- 訊息產生器在 build stage 明確執行，從[訊息表](../contract/reason_codes.csv)同時產出引擎訊息表與 `bootstrap.sh` 使用的 bash 片段，並與引擎共用 schema 型別；不用 `build.rs`。產生器的輸出納入 build，lint 依 [#136](https://github.com/ycpss91255-research/vendor_kit/issues/136) 檢查原因代碼的登錄、使用與退役。
+- 訊息產生器在 build stage 明確執行，從[訊息表](../contract/reason_codes.csv)同時產出引擎訊息表與 `bootstrap.sh` 使用的 bash 片段，並與引擎共用 schema 型別；不用 `build.rs`。產生器的輸出納入 build，lint 依 [#136](https://github.com/ycpss91255-lab/vendor_kit/issues/136) 檢查原因代碼的登錄、使用與退役。
 - 整支 VK 的端到端測試 crate 不依賴引擎 crate，只經公開入口，以 snapbox 加 assert_cmd 比對 stdout、stderr、結束碼與檔案樹；驗收依 [ADR-0010](0010-dev-self-and-acceptance.md) 經 just、啟動器與 Docker，不直接呼叫引擎 binary 來代替整條路徑。
 - 模組邊界採一個模組一個 crate，由 Rust 檢查器用 cargo_metadata 讀依賴圖，比對[架構圖目錄](../diagram/)中 `.drawio` 的邊，取代 import-linter；Cargo 的依賴宣告不能單獨代替圖面比對，新增可編譯的依賴仍須通過邊界檢查。[代理指引](../../AGENTS.md) 中的 import-linter 約定須另行改成本 ADR 的邊界檢查。
 - 引擎 image 的 build stage 用 Rust 工具鏈編譯，最終 stage 仍須帶 git，以執行 [ADR-0003](0003-baseline-merge-and-line-records.md) 的 `git merge-file`。

@@ -19,8 +19,8 @@ use e2e::{MOUNT_PREFIX_ENV, REGISTRY_URL_ENV, VERSION, shell, vendor_kit_bin};
 const RUN_ID: &str = "r1";
 const HOST_ROOT: &str = "/srv/proj";
 const RUN_LOG: &str = ".vendor_kit/log/r1.jsonl";
-const ENGINE_REPO: &str = "ghcr.io/ycpss91255-research/vendor_kit";
-const OLD_ENGINE: &str = "ghcr.io/ycpss91255-research/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
+const ENGINE_REPO: &str = "ghcr.io/ycpss91255-lab/vendor_kit";
+const OLD_ENGINE: &str = "ghcr.io/ycpss91255-lab/vendor_kit:v1.0.0@sha256:1111111111111111111111111111111111111111111111111111111111111111";
 const TOOL: &str = "ghcr.io/acme/tool:v1.0.0@sha256:3333333333333333333333333333333333333333333333333333333333333333";
 const DIGEST: &str = "sha256:2222222222222222222222222222222222222222222222222222222222222222";
 const IMAGE_ID: &str = "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -252,7 +252,7 @@ fn without_a_tag_the_latest_engine_is_pulled_by_digest_even_from_a_newer_shell()
     let tmp = tempfile::tempdir().unwrap();
     let m = Mounts::create(tmp.path());
     install(&m);
-    let path = "ycpss91255-research/vendor_kit";
+    let path = "ycpss91255-lab/vendor_kit";
     let registry = Registry::start_with(
         &[(path, Repo::public(&["v1.0.0", "v1.2.0", "latest"]))],
         &[(path, "v1.2.0", DIGEST)],
